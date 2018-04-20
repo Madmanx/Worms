@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a13297bc168e44db07c103afc15ebb, type: 3}
+  m_Name: Database
+  m_EditorClassIdentifier: 
+  listWeapons:
+  - weaponType: 1
+    damageRadius: 0.35
+    damage: 40
+    force: 25
+    prefab: {fileID: 1177599513867504, guid: 00efd93fee1f1cd44998cb5014c04a54, type: 2}
+    sprite: {fileID: 1979025354816524, guid: 2b1047a463633ce4499990ad16f5ab5f, type: 2}
+  - weaponType: 2
+    damageRadius: 0.25
+    damage: 30
+    force: 40
+    prefab: {fileID: 1177599513867504, guid: ee52994775cd22841b34fe9176eb8ff8, type: 2}
+    sprite: {fileID: 1979025354816524, guid: e1651d1c0383d8844a6f815db0691f16, type: 2}
+  - weaponType: 3
+    damageRadius: 0.6
+    damage: 50
+    force: 1
+    prefab: {fileID: 1177599513867504, guid: 397bbf1c8b884c3479a31d2b16231b3b, type: 2}
+    sprite: {fileID: 1979025354816524, guid: bbd4fe4adbb49c74cafdf29f000d7e6d, type: 2}
+  - weaponType: 4
+    damageRadius: 0.8
+    damage: 100
+    force: 20
+    prefab: {fileID: 1177599513867504, guid: b1528838060a1614b9804275a97bcd08, type: 2}
+    sprite: {fileID: 1979025354816524, guid: d2e32d997e1564a4ba3d85b87e2817a5, type: 2}
+  listCrate:
+  - crateType: 1
+    prefab: {fileID: 1177599513867504, guid: ae2a553a030e4d04fa5be558fd8900fa, type: 2}
+  - crateType: 2
+    prefab: {fileID: 1177599513867504, guid: 7f3f67dc46980424baf024245b45edaa, type: 2}
+  explosion: {fileID: 1953558591760254, guid: 64c7848c22d04a34d8b0d6a2fde3a93b, type: 2}
