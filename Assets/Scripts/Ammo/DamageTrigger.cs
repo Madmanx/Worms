@@ -55,6 +55,10 @@ public class DamageTrigger : MonoBehaviour
                     ownerAmmo = GetComponentInParent<AmmoComponent>();
             }
 
+            if (collider.GetComponent<WormCharacter>().IsDead)
+                return;
+
+
             // For now always of type Explosion for Ammo
             if (!damageApplied)
             {

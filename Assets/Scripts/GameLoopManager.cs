@@ -171,12 +171,15 @@ public class GameLoopManager : MonoBehaviour
         // Avant je faisais juste toggleCurrentWormInCurrentTeam mais j'ai un ou deux cas improbable a cause du askForChangeTurn
         for (int i = 0; i < wormsTeam1.FindAll(a => a.Possessed == true).Count; i++)
         {
+            wormsTeam1.FindAll(a => a.Possessed == true)[i].GetComponent<WormInventory>().IsInventoryOpen = false;
             wormsTeam1.FindAll(a => a.Possessed == true)[i].Possessed = false;
         }
         for (int i = 0; i < wormsTeam2.FindAll(a => a.Possessed == true).Count; i++)
         {
+            wormsTeam2.FindAll(a => a.Possessed == true)[i].GetComponent<WormInventory>().IsInventoryOpen = false;
             wormsTeam2.FindAll(a => a.Possessed == true)[i].Possessed = false;
         }
+        InventoryManager.Instance.ClearInventoryContainer();
 
         ChangeTurn();
         ToggleCurrentWormInCurrentTeam(true);

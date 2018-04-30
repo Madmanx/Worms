@@ -24,6 +24,9 @@ public class CrateComponent : MonoBehaviour
     {
         if (collision.collider.CompareTag("Worm"))
         {
+            if (collision.collider.GetComponent<WormCharacter>().IsDead)
+                return;
+
             switch (crateType) { 
                 case CrateType.Ammo:
                     int rand = Random.Range(0, DatabaseManager.Instance.Db.ListWeapons.Count);

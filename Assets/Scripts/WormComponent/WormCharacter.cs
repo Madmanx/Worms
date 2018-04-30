@@ -14,9 +14,24 @@ public class WormCharacter : MonoBehaviour
 
     public bool onGround = false;
 
+    private bool isDead = false;
+
     private Animator anim;
     private Rigidbody2D rb;
     private SpriteRenderer sRenderer;
+
+    public bool IsDead
+    {
+        get
+        {
+            return isDead;
+        }
+
+        set
+        {
+            isDead = value;
+        }
+    }
 
     // Use this for initialization
     void Start () {

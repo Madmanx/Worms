@@ -118,10 +118,10 @@ public class Database : ScriptableObject
 
         explosion = Resources.Load<GameObject>("ExplosionTypeA");
 
-        listWeapons.Add(new Weapon(WeaponType.Grenade, 0.35f, 40, 25, Resources.Load<GameObject>("Grenade") as GameObject, Resources.Load<GameObject>("GrenadeIcon") as GameObject));
-        listWeapons.Add(new Weapon(WeaponType.Rocket, 0.25f, 30, 40, Resources.Load<GameObject>("Rocket") as GameObject, Resources.Load<GameObject>("RocketIcon") as GameObject));
+        listWeapons.Add(new Weapon(WeaponType.Grenade, 0.4f, 40, 4, Resources.Load<GameObject>("Grenade") as GameObject, Resources.Load<GameObject>("GrenadeIcon") as GameObject));
+        listWeapons.Add(new Weapon(WeaponType.Rocket, 0.3f, 30, 8, Resources.Load<GameObject>("Rocket") as GameObject, Resources.Load<GameObject>("RocketIcon") as GameObject));
         listWeapons.Add(new Weapon(WeaponType.Dynamite, 0.6f, 50, 1, Resources.Load<GameObject>("Dynamite") as GameObject, Resources.Load<GameObject>("DynamiteIcon") as GameObject));
-        listWeapons.Add(new Weapon(WeaponType.Holy, 0.8f, 100, 20, Resources.Load<GameObject>("Grenade") as GameObject, Resources.Load<GameObject>("HolyIcon") as GameObject));
+        listWeapons.Add(new Weapon(WeaponType.Holy, 0.8f, 100, 4, Resources.Load<GameObject>("HolyGrenade") as GameObject, Resources.Load<GameObject>("HolyIcon") as GameObject));
 
         listCrate.Add(new Crate(Resources.Load<GameObject>("HealCrate") as GameObject, CrateType.Heal));
         listCrate.Add(new Crate(Resources.Load<GameObject>("AmmoCrate") as GameObject, CrateType.Ammo));

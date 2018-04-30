@@ -38,5 +38,22 @@ public class AmmoCollider : MonoBehaviour
 
             ownerAmmo.AmmoBehaviourImpact(collision.collider.GetComponent<TerrainDestructible>());
         }
+        else if (collision.collider.CompareTag("Worm"))
+        {
+            if (collision.collider.GetComponent<WormInfo>() && collision.collider.GetComponent<WormInfo>().underMe != null)
+            {
+                // error when throw in water or worm ? ? 
+                if (!ownerAmmo)
+                {
+                    if (GetComponentInParent<AmmoComponent>())
+                        ownerAmmo = GetComponentInParent<AmmoComponent>();
+                }
+
+                if (collision.collider.GetComponent<WormCharacter>().IsDead)
+                    return;
+
+                ownerAmmo.AmmoBehaviourImpact(collision.collider.GetComponent<WormInfo>().underMe);
+            }
+        }
     }
 }

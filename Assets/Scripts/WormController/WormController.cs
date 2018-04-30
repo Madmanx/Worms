@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WormController : MonoBehaviour {
 
     private WormCharacter wormCharacter;
     private WormInventory wormInventory;
+  
     private WormAttack wormAttack;
     private Direction dir;
 
@@ -22,6 +24,9 @@ public class WormController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        if (wormCharacter.IsDead)
+            return;
 
         wormCharacter.AnimJump(!wormCharacter.onGround);
 
@@ -40,10 +45,10 @@ public class WormController : MonoBehaviour {
 
         ///TODO : Here !!
         // chargement rocket angles test
-        //if( needReclick && goChargementRocketType)
-        //{
-        //    goChargementRocketType.transform.rotation = Quaternion.Euler(new Vector3(0, 0, CalculateDirectionFromMouse().x));
-        //}
+        if (needReclick && goChargementRocketType)
+        {
+            goChargementRocketType.GetComponentInChildren<Image>().transform.eulerAngles = Vector3.SignedAngle(new Vector3(CalculateDirectionFromMouse().x, CalculateDirectionFromMouse().y,0), Vector3.up, -Vector3.forward) * Vector3.forward;
+        }
 
         // Controls Inventory
         if (Input.GetKeyDown(KeyCode.I) || Input.GetMouseButtonDown(1))
@@ -111,7 +116,7 @@ public class WormController : MonoBehaviour {
 
     private Vector2 CalculateDirectionFromMouse()
     {
-        return ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized);
+        return new Vector2((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).x, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).y).normalized;
     }
 
 }

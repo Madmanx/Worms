@@ -8,6 +8,9 @@ public class SuddenDeathTrigger : MonoBehaviour {
     {
         if (collider.CompareTag("Worm"))
         {
+            if (collider.GetComponent<WormCharacter>().IsDead)
+                return;
+
             collider.GetComponent<WormInfo>().ApplyDamage(100, TypeOfDamage.Water);
         }
         else

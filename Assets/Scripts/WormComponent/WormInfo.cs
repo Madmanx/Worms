@@ -10,44 +10,6 @@ public class WormInfo : MonoBehaviour
 {
     [SerializeField]
     private int life;
-
-    [SerializeField]
-    private TextMeshProUGUI textPseudo;
-    [SerializeField]
-    private Image colorTeamPseudo;
-
-    [SerializeField]
-    private TextMeshProUGUI textLife;
-    [SerializeField]
-    private Image colorTeamLife;
-
-    [SerializeField]
-    private GameObject pointer;
-
-    private string pseudo;
-    private Color color;
-    private TeamState myTeam;
-
-    private bool possessed;
-
-    public TerrainDestructible underMe;
-
-    #region GET/SET
-
-    public string Pseudo
-    {
-        get
-        {
-            return pseudo;
-        }
-
-        set
-        {
-            pseudo = value;
-            textPseudo.text = pseudo;
-        }
-    }
-
     public int Life
     {
         get
@@ -63,6 +25,80 @@ public class WormInfo : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private TextMeshProUGUI textPseudo;
+    [SerializeField]
+    private Image colorTeamPseudo;
+
+    [SerializeField]
+    private TextMeshProUGUI textLife;
+    [SerializeField]
+    private Image colorTeamLife;
+
+    [SerializeField]
+    private GameObject pointer;
+
+    public GameObject Pointer
+    {
+        get
+        {
+            return pointer;
+        }
+
+        set
+        {
+            pointer = value;
+        }
+    }
+
+    private string pseudo;
+    public string Pseudo
+    {
+        get
+        {
+            return pseudo;
+        }
+
+        set
+        {
+            pseudo = value;
+            textPseudo.text = pseudo;
+        }
+    }
+
+    private Color color;
+
+    public Color Color
+    {
+        get
+        {
+            return color;
+        }
+
+        set
+        {
+            color = value;
+            colorTeamPseudo.color = color;
+            colorTeamLife.color = color;
+        }
+    }
+
+    private TeamState myTeam;
+
+    public TeamState MyTeam
+    {
+        get
+        {
+            return myTeam;
+        }
+
+        set
+        {
+            myTeam = value;
+        }
+    }
+
+    private bool possessed;
 
     public bool Possessed
     {
@@ -84,48 +120,7 @@ public class WormInfo : MonoBehaviour
         }
     }
 
-    public GameObject Pointer
-    {
-        get
-        {
-            return pointer;
-        }
-
-        set
-        {
-            pointer = value;
-        }
-    }
-
-    public Color Color
-    {
-        get
-        {
-            return color;
-        }
-
-        set
-        {
-            color = value;
-            colorTeamPseudo.color = color;
-            colorTeamLife.color = color;
-        }
-    }
-
-    public TeamState MyTeam
-    {
-        get
-        {
-            return myTeam;
-        }
-
-        set
-        {
-            myTeam = value;
-        }
-    }
-
-    #endregion
+    public TerrainDestructible underMe;
 
     void Start()
     {
@@ -209,7 +204,13 @@ public class WormInfo : MonoBehaviour
     public void Death()
     {
         GameLoopManager.Instance.OnWormDeath(this);
+
+        // Hide inventories
         InventoryManager.Instance.ClearInventoryContainer();
+        GetComponent<WormInventory>().IsInventoryOpen = false;
+
+        // Just for controls
+        GetComponent<WormCharacter>().IsDead = true;
 
         // No anim so destroy
         GetComponent<WormCharacter>().AnimDead();
